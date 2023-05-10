@@ -11,7 +11,7 @@ import com.luiz.tmdbclient.data.model.movie.MovieList
 interface MovieDao {
 
     @Query("SELECT * FROM popular_movies")
-    suspend fun getMovies(movies: List<Movie>)
+    suspend fun getMovies():List<Movie>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveMovies(movies: List<Movie>)

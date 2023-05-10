@@ -4,6 +4,6 @@ package com.luiz.tmdbclient.data.model.artist
 import com.google.gson.annotations.SerializedName
 
 data class ArtistList(
-    @SerializedName("results")
+    @SerializedName("artists")
     val artists: List<Artist>,
 )

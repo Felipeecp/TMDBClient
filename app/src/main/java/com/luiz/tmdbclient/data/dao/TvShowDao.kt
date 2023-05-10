@@ -12,7 +12,7 @@ import javax.inject.Inject
 interface TvShowDao {
 
     @Query("SELECT * FROM popular_tvshow")
-    suspend fun getTvShows(tvShowList: List<TvShow>)
+    suspend fun getTvShows():List<TvShow>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveTvShows(tvShowList: List<TvShow>)

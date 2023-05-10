@@ -10,7 +10,7 @@ import com.luiz.tmdbclient.data.model.artist.Artist
 interface ArtistDao {
 
     @Query("SELECT * FROM popular_artists")
-    suspend fun getArtists(artists: List<Artist>)
+    suspend fun getArtists():List<Artist>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveArtists(artists: List<Artist>)
