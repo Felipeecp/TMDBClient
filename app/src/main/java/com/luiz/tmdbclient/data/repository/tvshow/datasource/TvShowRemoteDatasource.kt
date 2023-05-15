@@ -4,7 +4,5 @@ import com.luiz.tmdbclient.data.model.tvshow.TvShowList
 import retrofit2.Response
 
 interface TvShowRemoteDatasource {
-
-    suspend fun getTvShow():Response<TvShowList>
-
+   suspend fun getTvShows(): Response<TvShowList>
 }

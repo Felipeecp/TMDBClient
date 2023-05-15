@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.devtools.ksp' version '1.8.21-1.0.11' apply false
     id "kotlin-kapt"
 }
 
@@ -18,7 +17,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String","API_KEY","\"$System.env.TMDB_KEY\""
+        buildConfigField "String","API_KEY","\"21b54dc0c96b8b66bf4eae6284de4a07\""
+        buildConfigField "String","BASE_URL","\"https://api.themoviedb.org/3/\""
     }
 
     buildTypes {
@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     dataBinding{
@@ -44,8 +44,6 @@ dependencies {
 
     def lifecycle_version = "2.6.1"
     def room_version = "2.5.0"
-
-    implementation 'com.google.devtools.ksp:symbol-processing-api:1.8.21-1.0.11'
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -61,6 +59,7 @@ dependencies {
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -77,13 +76,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
 
     // dagger
-    implementation 'com.google.dagger:dagger-android:2.46'
-    implementation 'com.google.dagger:dagger-android-support:2.46' // if you use the support libraries
-    kapt 'com.google.dagger:dagger-android-processor:2.46'
+    def dagger_version = "2.32"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     // gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.google.code.gson:gson:2.10.1'
     // loggin-interceptor
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
@@ -91,5 +91,7 @@ dependencies {
 
     // glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0'
 
 }

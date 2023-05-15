@@ -7,28 +7,30 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-class TMDBService {
+interface TMDBService {
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     suspend fun getPopularMovies(
-        @Query("api_key") apiKey:String)
-    :Response<MovieList>{
-        TODO()
-    }
+        @Query(
+            "api_key"
+        ) apiKey: String
+    ): Response<MovieList>
 
-    @GET("/tv/popular")
+    @GET("tv/popular")
     suspend fun getPopularTvShows(
-        @Query("api_key") apiKey:String)
-    :Response<TvShowList>{
-        TODO()
-    }
+        @Query(
+            "api_key"
+        ) apiKey: String
+    ): Response<TvShowList>
 
-
-    @GET("/person/popular")
+    @GET("person/popular")
     suspend fun getPopularArtists(
-        @Query("api_key") apiKey:String)
-    :Response<ArtistList>{
-        TODO()
-    }
+        @Query(
+            "api_key"
+        ) apiKey: String
+    ): Response<ArtistList>
+
+
+
 
 }
