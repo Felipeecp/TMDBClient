@@ -8,5 +8,4 @@
         android:icon="@drawable/baseline_update_24"
         app:showAsAction="always"
         android:title="Update" />
-
 </menu>

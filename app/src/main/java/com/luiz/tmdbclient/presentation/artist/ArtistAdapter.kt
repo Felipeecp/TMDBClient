@@ -41,7 +41,7 @@ class ArtistAdapter:RecyclerView.Adapter<ArtistViewHolder>() {
 class ArtistViewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
     fun bind(artist: Artist){
         binding.tvTitle.text = artist.name
-        binding.tvDescription.text = artist.popularity.toString()
+        binding.tvDescription.text = "Popularity: " + artist.popularity.toString()
         val posterURL = "https://image.tmdb.org/t/p/w500"+artist.profilePath
         Glide.with(binding.imgContent.context)
             .load(posterURL)

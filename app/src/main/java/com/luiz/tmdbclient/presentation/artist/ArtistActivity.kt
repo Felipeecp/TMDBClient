@@ -2,16 +2,18 @@ package com.luiz.tmdbclient.presentation.artist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.luiz.tmdbclient.R
 import com.luiz.tmdbclient.databinding.ActivityArtistBinding
 import com.luiz.tmdbclient.presentation.di.Injector
-import com.luiz.tmdbclient.presentation.movie.MovieViewModelFactory
 import javax.inject.Inject
 
 class ArtistActivity : AppCompatActivity() {
@@ -55,5 +57,37 @@ class ArtistActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "No data available", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.update, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_update -> {
+                updateArtists()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
+    }
+
+    private fun updateArtists(){
+        binding.artistProgressBar.visibility = View.VISIBLE
+        val response = artistViewModel.updateArtists()
+        response.observe(this, Observer {
+            if(it!=null){
+                adapter.setList(it)
+                adapter.notifyDataSetChanged()
+                binding.artistProgressBar.visibility = View.GONE
+            }else{
+                binding.artistProgressBar.visibility = View.GONE
+            }
+        })
     }
 }
