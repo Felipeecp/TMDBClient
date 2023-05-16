@@ -17,7 +17,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String","API_KEY","\"21b54dc0c96b8b66bf4eae6284de4a07\""
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+
+        buildConfigField "String","API_KEY","\"${properties.getProperty("API_KEY")}\""
         buildConfigField "String","BASE_URL","\"https://api.themoviedb.org/3/\""
     }
 
