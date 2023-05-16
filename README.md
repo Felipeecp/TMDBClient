@@ -1,6 +1,6 @@
 # Aplicativo Android Kotlin - README
 
-![Aplicativo](./gif/tmdb.gif)
+<img src="gif\tmdb.gif" width="200" height="400" alt="Exemplo de GIF">
 
 Este é um aplicativo Android Kotlin desenvolvido utilizando a arquitetura MVVM (Model-View-ViewModel). O aplicativo é baseado no conceito do TMDB (The Movie Database) e oferece funcionalidades para visualizar e atualizar filmes, programas de TV e artistas. Ele utiliza várias tecnologias e bibliotecas para aprimorar sua funcionalidade e manter uma estrutura modular. Este README fornece uma visão geral das tecnologias utilizadas neste projeto.
 
